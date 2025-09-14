@@ -42,7 +42,7 @@ Instalación
 Clona el repositorio:
 
 Bash
-git clone https://github.com/tu-usuario/shop-car.git
+git clone https://github.com/(usuario)/tienda_react_native.git
 Navega al directorio del proyecto:
 
 Bash
