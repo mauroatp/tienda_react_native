@@ -1,35 +1,43 @@
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
-import categories from './src/data/categories.json'
+import { StyleSheet } from 'react-native';
 import Header from './src/components/Header';
-import FlatCard from './src/components/FlatCard';
+import { useState,useEffect } from 'react';
+import MainNavigator from './src/navigation/MainNavigator';
+import { Provider } from 'react-redux';
+import { store } from './src/store';
+import Toast from 'react-native-toast-message';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const renderCategoryItem = ({ item }) => {
-    console.log(item)
-    return (
-      <FlatCard>
-        <Text>{item.title}</Text>
-        <Image width={120} height={50} source={{ uri: item.image }} resizeMode='contain' />
-      </FlatCard>
-    )
+  const [categorySelected, setCategorySelected] = useState("")
+  const [loaded, error] = useFonts({
+    'Karla-Regular': require('./assets/fonts/Karla-Regular.ttf'),
+    'Karla-Bold': require('./assets/fonts/Karla-Bold.ttf'),
+    'Karla-Light': require('./assets/fonts/Karla-Light.ttf'),
+    'Karla-Italic': require('./assets/fonts/Karla-Italic.ttf'),
+    'PressStart2P-Regular': require('./assets/fonts/PressStart2P-Regular.ttf'),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
   }
+
   return (
-    <View style={styles.container}>
-      <Header title="Mundo Geek" />
-      <FlatList
-        data={categories}
-        renderItem={renderCategoryItem}
-        keyExtractor={item => item.id}
-      />
-      <StatusBar style="light" />
-    </View>
+
+   <Provider store={store}>
+        <StatusBar style="light" />
+        <MainNavigator />
+        <Toast /> 
+    </Provider>
+
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

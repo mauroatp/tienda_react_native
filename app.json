@@ -20,10 +20,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.mauroatp.tiendaVirtual"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-sqlite"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "46ddb2f9-db47-4e5d-afd9-81f434eb3c24"
+      }
     }
   }
 }
