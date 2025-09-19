@@ -69,4 +69,5 @@ npx react-native run-android
 
 ## Usuario prueba
 u: prueba@prueba.com
+
 p: 123456
