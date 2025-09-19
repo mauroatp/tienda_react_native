@@ -67,6 +67,6 @@ Bash
 npx react-native run-android
 🤝 Contribuciones
 
-##usuario prueba
+## Usuario prueba
 u: prueba@prueba.com
 p: 123456
