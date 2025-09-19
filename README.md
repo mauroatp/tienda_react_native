@@ -66,3 +66,7 @@ Para Android
 Bash
 npx react-native run-android
 🤝 Contribuciones
+
+##usuario prueba
+u: prueba@prueba.com
+p: 123456
